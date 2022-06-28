@@ -1,0 +1,106 @@
+    <div id="stopWatch">
+       <div id="timer"></div>
+       <div id="buttons">
+           <ul>
+               <button id="start" class="blue">start</button>
+               <button class='hidden red' id="stop">stop</button>
+               <button class="hidden blue" id="resume">resume</button>
+               <button class='hidden black' id="reset">reset</button>
+           </ul>
+       </div>
+   </div>
+   <script>
+   
+   // timer
+let displayTimer = document.getElementById('timer');
+
+// cmd
+let start = document.getElementById('start');
+let stop = document.getElementById('stop');
+let resume = document.getElementById('resume');
+let reset = document.getElementById('reset');
+
+
+// setting
+let time = '00:00.00';
+let min_element = 0;
+let sec_element = 0;
+let ms_element = 0;
+let controller;
+
+displayTimer.innerHTML = time;
+
+// start
+start.addEventListener('click', function ()
+{
+   controller = setInterval(TimerEvent, 10);
+   start.classList.add('hidden');
+   stop.classList.remove('hidden');
+});
+
+// stop
+stop.addEventListener('click', function ()
+{
+   controller = clearInterval(controller);
+   stop.classList.add('hidden');
+   resume.classList.remove('hidden');
+   reset.classList.remove('hidden');
+});
+
+// resume
+resume.addEventListener('click', function ()
+{
+   controller = setInterval(TimerEvent, 10);
+   resume.classList.remove('hidden');
+   reset.classList.add('hidden');
+   stop.classList.add('hidden');
+});
+
+// reset
+reset.addEventListener('click', function ()
+{
+   min_element = 0;
+   sec_element = 0;
+   ms_element = 0;
+   timer.innerHTML = time;
+
+   resume.classList.add('hidden');
+   reset.classList.add('hidden');
+   start.classList.remove('hidden');
+});
+
+function TimerEvent ()
+{
+   ms_element++;
+   if (ms_element == 100) {
+       ms_element = 0;
+       sec_element++;
+   }
+   if (sec_element == 60) {
+       sec_element = 0;
+       min_element++;
+   }
+   DisplayTimer();
+}
+
+function DisplayTimer ()
+{
+   let ms = ms_element;
+   let sec = sec_element;
+   let min = min_element;
+
+   if (ms < 10) {
+       ms = '0' + ms_element;
+   }
+   if (sec < 10) {
+       sec = '0' + sec_element;
+   }
+   if (min < 10) {
+       min = '0' + min_element;
+   }
+   displayTimer.innerHTML = min + ':' + sec + '.' + ms;
+}
+
+
+
+   </script>
