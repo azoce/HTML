@@ -1,0 +1,40 @@
+body {
+   padding-top: 40%;
+   margin: auto;
+   text-align: center;
+}
+
+/* ストップウォッチ画面 */
+ #stopWatch #timer {
+   text-align: center;
+}
+
+/* ボタン */
+ #buttons ul {
+   text-align: center;
+   padding: 0;
+}
+button {
+   padding: auto;
+   color: #fff;
+   border-radius: 10px;
+   width: 100px;
+   font-weight: bold;
+}
+
+
+/* color */
+.blue {
+   background-color: blue;
+}
+.red {
+   background-color: red;
+}
+.black {
+   background-color: black;
+}
+
+/* 状態 */
+.hidden {
+   display: none;
+}
